@@ -16,6 +16,9 @@ app.get("/greeting/:name", (request, response) => {
  
 // ---- Tip calculator ------
 app.get("/tip/:total/:tipPercentage", (request, response) => {
+
+	// DRY Code
+	// parseInt to change from string number to a number number
 	const total = parseInt(request.params.total)
 	const tipPercentage = parseInt(request.params.tipPercentage)
 	const tip = .01
@@ -23,15 +26,36 @@ app.get("/tip/:total/:tipPercentage", (request, response) => {
 })
 
 
+// ---- Magic 8 Ball -----
+app.get("/magic/:question", (request, response) => {
+	const magicBall = [
+			"It is certain",
+			"It is decidedly so",
+			"Without a doubt",
+			"Yes definitely",
+			"You may rely on it",
+			"As I see it yes",
+			"Most likely",
+			"Outlook good",
+			"Yes",
+			"Signs point to yes",
+			"Reply hazy try again",
+			"Ask again later",
+			"Better not tell you now",
+			"Cannot predict now",
+			"Concentrate and ask again",
+			"Don't count on it",
+			"My reply is no",
+			"My sources say no",
+			"Outlook not so good",
+			"Very doubtful",
+	]
 
+	const random = magicBall[Math.floor(Math.random() * magicBall.length)]
 
-
-
-
-
-
-
-
+	response.send(`Question: ${request.params.question}?<br>
+	<h1>${random}</h1>`)
+})
 
 
 // ---------- Listen pn port ------------
