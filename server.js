@@ -53,7 +53,7 @@ app.get("/magic/:question", (request, response) => {
 
 	const random = magicBall[Math.floor(Math.random() * magicBall.length)]
 
-	response.send(`Question: ${request.params.question}?<br>
+	response.send(`Question: ${request.params.question}?
 	<h1>${random}</h1>`)
 })
 
